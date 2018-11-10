@@ -1,0 +1,148 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{sol}{Solution}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Homework 5: Quadratic Inequalities}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{Reading}
+
+\begin{sol}[L3.4]
+Suppose our quadratic equation is $ax^2+bx+c = 0$ and has roots $x_0, x_1$. Then by Vieta's Theorem we know that $b = -a(x_0+x_1)$ and $c = a(x_0x_1)$. Since all the number involved are integers, we know that $a \mid c$, $x_0 \mid c$ and $x_1 \mid c$. So $c$ is divisible by at least three of the other numbers. But among the four integers left on the board there is only one pair where one is divisible by another: $2 \mid 4$. This means that the erased number must have been $c$. Since Vieta's theorem also tells us that $a \mid b$, we must have $a = 2$ and $b = 4$. Then the roots are $3, -5$, and we can find $c$ via $c = a(x_0x_1) = 2 \cdot 3 \cdot (-5) = -30$, which is the answer
+\end{sol}
+
+\begin{sol}[L3.2b]
+Suppose we want to write our function $f$ as $g+h$, where $g$ is even and $h$ is odd. This means that for any $x 
+\in \R$ we have $$g(-x) = g(x)$$ $$h(-x) = -h(x)$$ $$f(x) = g(x)+h(x)$$ We also know that $$f(-x) = g(-x) + h(-x) = g(x) - h(x)$$ Adding the last two equations and subtracting we get $$f(x) + f(-x) = 2g(x)$$ $$f(x) - f(-x) = 2h(x)$$ or, after dividing by 2, $$\frac{f(x) + f(-x)}{2} = g(x)$$ $$\frac{f(x) - f(-x)}{2} = h(x)$$ This takes care of the uniqueness part -- we just showed that if such $g$ and $h$ do exist, they must be given exactly by formulas $$g(x) = \frac{f(x) + f(-x)}{2}$$ $$h(x) = \frac{f(x) - f(-x)}{2}$$ for all real $x$. On the other hand, this also gives us the existence. If we define $g$ and $h$ as above, then they are indeed even and odd: $$g(-x) = \frac{f(-x) + f(x)}{2} = \frac{f(x) + f(-x)}{2} = g(x)$$ $$h(-x) = \frac{f(-x) - f(x)}{2} = -\frac{f(x) - f(-x)}{2} = -h(x)$$ And for all $x \in \R$ we have $$g(x) + h(x) = \frac{f(x) + f(-x)}{2} + \frac{f(x) - f(-x)}{2} = f(x)$$ so we are done.
+ \end{sol}
+
+\section{Homework}
+
+\begin{prb}
+Without computing the roots $x_0, x_1$ of the equation $3x^2+8x-1$, determine the following quantities:\\
+\part{a} $x_0x_1^4 + x_1x_0^4$
+\part{b} $x_0^4 + x_1^4$
+\part{c} $x_0/x_1+x_1/x_0$
+\end{prb}
+
+\begin{prb}
+The quadrilateral $ABCD$ is inscribed and circumscribed at the same time, and the centers of its incircle and circumcircle coincide. Show that $ABCD$ is a square.
+\end{prb}
+
+\end{document}
