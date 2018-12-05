@@ -1,0 +1,104 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+%\usepackage{centernot}
+%\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+%\usepackage{bm}
+%\usepackage[mathscr]{euscript}
+%\usepackage{pictexwd,dcpic}
+%\usepackage{tikz}
+%\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
+
+
+\author{Anton Lykov \& Konstantin Miagkov} 
+\title{Lesson 9: Game}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\begin{prb}
+Mike has 130 details. He can build a toy windmill using 5 details, a ship using 7 details, and a plane using 14 details. A plane costs 19 coins, ship - 8 coins, and windmill - 6 coins. What is the largest amount of coins Mike can earn?
+\end{prb} 
+
+
+
+\end{document}
