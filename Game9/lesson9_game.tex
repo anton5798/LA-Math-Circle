@@ -43,6 +43,7 @@
   {\endprb
    \global\c@prb\count@}
 \makeatother
+
 \makeatletter
 \newenvironment{cexe}[1]
   {\count@\c@exe
@@ -52,39 +53,12 @@
   {\endexe
    \global\c@exe\count@}
 \makeatother
+
 \newcommand{\varline}{0}
 \newcommand{\gen}[1]{\left< #1 \right>}
 \newcommand{\ngen}[1]{\gen{\gen{#1}}}
 \newcommand{\ov}[1]{\,\overline{#1}}
-\DeclareMathOperator{\tor}{Tor}
-\DeclareMathOperator{\aut}{Aut}
-\DeclareMathOperator{\inn}{Inn}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\imm}{Im}
-\DeclareMathOperator{\ad}{ad}
-\DeclareMathOperator{\Ad}{Ad}
-\DeclareMathOperator{\Sp}{Sp}
-\DeclareMathOperator{\SO}{SO}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\SU}{SU}
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\PGL}{PGL}
-\DeclareMathOperator{\re}{Re}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\sym}{Sym}
-\DeclareMathOperator{\ind}{Ind}
-\DeclareMathOperator{\res}{Res}
-\DeclareMathOperator{\sgn}{sgn}
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\colim}{colim}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\intr}{int}
-\DeclareMathOperator{\extr}{ext}
-\DeclareMathOperator{\chr}{char}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\hol}{Hol}
-\DeclareMathOperator{\spec}{Spec}
+
 \renewcommand{\Re}{\re}
 \renewcommand{\Im}{\imm}
 \newcommand{\eps}{\varepsilon}
@@ -99,10 +73,7 @@
 \newcommand{\lnorm}{\vartriangleleft}
 \newcommand{\rnorm}{\vartriangleright}
 \newcommand{\id}{\text{id}}
-\newcommand{\dd}[1]{\mathrm{d}{#1}}
-\newcommand{\p}[1]{\left( #1 \right)}
-\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
-\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+
 \makeatletter
 \renewcommand\part[1]{
 \ifnum\pdfstrcmp{\varline}{1}=0
@@ -111,57 +82,40 @@
     \textbf{#1)}
   \fi\renewcommand{\varline}{1}}
 \makeatother
+
 \makeatletter
 \newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
 \makeatother
 \renewcommand{\restriction}{\mathord{\upharpoonright}}
 
 
-\author{Anton Lykov} 
-\title{Lesson 8: Quadratic Equations Mix}
+\author{Anton Lykov \& Konstantin Miagkov} 
+\title{Lesson 9: Game}
 \begin{document} 
 %\setstretch{1}
 \maketitle
 
-\noindent
-Read all the problems before starting to solve any! 
+\begin{prb}
+Magnus played in a chess tournament with 20 games, and earned 12.5 points.
+How many more games did he win, than lose? In a chess tournament, you earn 1 point for a win, 0.5 for a draw, and 0 for a lose. 
+\end{prb} 
 
 \begin{prb}
-Prove that if $b$ is any real number and $a \neq 0$, then the quadratic equation $ax^2 + bx - a = 0$ has two distinct real roots.
-\end{prb}
-
-
-\begin{prb}
-$f(x) = x^2 + px + q$ is an even function. Find (with proof) the value of $p$. 
-\end{prb}
-
+Amy makes two 4-digit numbers using each of the digits 1,2,3,4,5,6,7, and 8 exactly once. If Amy makes the numbers so that adding them gives the smallest possible total, what is the total?
+\end{prb} 
 
 \begin{prb}
-Points $A, B, C$  lie on a circle of radius $r$, and $AC = r$. Find $\angle ABC$. \\
-\textit{Hint: Is there only one solution?}
-\end{prb}
-
+	Mike has 130 details. He can build a toy windmill using 5 details, a ship using 7 details, and a plane using 14 details. A plane costs 19 coins, ship - 8 coins, and windmill - 6 coins. What is the largest amount of coins Mike can earn?
+\end{prb} 
 
 \begin{prb}
-	\part{a} Find $p$ and $q$, if $10$ and $-15$ are the roots of the quadratic equation $x^2 + px + q$.
-	\part{b} Sum of squares of roots of a quadratic equation $x^2 + px - 3 = 0$ is equal to $10$. Find $p$.
+Find a 10-digit number where the first digit is equal to how many 0's are in the number, the second digit is equal to how many 1's are in the number, the third digit is equal to how many 2's are in the number, all the way up to the last digit, which is equal to how many 9's are in the number.
 \end{prb}
-
+ 
 
 \begin{prb}
-	\part{a} What is the minimum value of the function $f(x) = x^2 + 10x - 13$? 
-	\part{b} What is its maximum value?
+Mark 6 points on the plane such that for each point there would be exactly three other points at a distance 1 from it.
 \end{prb}
-
-
-
-
-\begin{prb}
-Let $O$ be the center of a circle and $A$ be a point outside of it. Let $AM$ and $AN$ be tangents to the circle, 
-and let $B$ be the intersection of line $AO$ with the circle furthest from $A$. Given that $AN \parallel BM$, find $\angle OAM$ and prove that $AMBN$ is a rhombus.
-\end{prb}
-
-
 
 
 
