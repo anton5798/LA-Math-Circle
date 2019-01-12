@@ -1,0 +1,163 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
+
+\author{Konstantin Miagkov} 
+\title{Lesson 7: Quadratic Equations VI}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{From Last Week}
+
+\begin{cprb}{1}
+Let $f(x) = ax^2+bx+c$ be a quadratic function with $a > 0$, and set $h = -b/(2a)$. Show that the $f$ is decreasing from $-\infty$ to $h$ and increasing from $h$ to $+\infty$. In other words, show that for all $x,y$ such that $x < y < h$ we have $f(x) > f(y)$, and for all $x,y$ with $h < x < y$ we get $f(x) < f(y)$. What happens when $a < 0$? \textit{Hint: complete the square!}
+\end{cprb}
+
+
+\begin{cprb}{4}[Anton's group only]
+Show that a quadratic equation $f$ with two distinct real roots $x_0, x_1$ is an even function if and only if $x_0 = -x_1$.
+\end{cprb}
+
+\begin{cprb}{6}
+In a triangle $ABC$ we have $\angle ACB = 135^\circ$. Let $ABMN$ be a square lying to the opposite side of $C$ with respect to $AB$, and let $O$ be the intersection of its diagonals. If $AM = 12$, find $OC$.
+\end{cprb}
+
+
+\section{New Problems}
+
+\begin{prb}
+Let $ax^2+bx+c = 0$ be a quadratic equation with $a > 0$ and $c < 0$. Show that this equation has two distinct real roots.
+\end{prb}
+
+\begin{prb}
+\part{a} Let $f(x) = ax^2+bx+c$ be a quadratic function. Show that if $f(x_0) = f(x_1)$ for some pair of real numbers $x_0 \neq x_1$, then $x_0+ x_1 = -b/a$.
+\part{b} Show the converse: if $x_0+ x_1 = -b/a$, then $f(x_0) = f(x_1)$. If you completed both parts of the problem, congratulations -- you have successfully proven that a parabola (graph of a quadratic function) is symmetric with respect to the line $x = -b/2a$.
+\end{prb}
+
+\begin{prb}
+Let $ABCD$ be an inscribed quadrilateral. The angle between the lines $AB$ and $CD$ is $15^\circ$, and the angle between the lines $AD$ and $BC$ is $45^\circ$. Find $\angle BAD$.
+\end{prb}
+
+\begin{prb}
+Suppose the angle bisectors of $\triangle ABC$ intersect its circumcircle at points $A_1, B_1, C_1$. Show that $AA_1 \perp B_1C_1$.
+\end{prb}
+
+
+
+
+\end{document}
