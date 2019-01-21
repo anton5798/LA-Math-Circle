@@ -33,6 +33,7 @@
 \newtheorem{crl}{Corollary}
 \newtheorem{rem}{Reminder}
 \newtheorem{prb}{Problem}
+\newtheorem{sol}{Solution}
 \newtheorem{exe}{Exercise}
 \makeatletter
 \newenvironment{cprb}[1]
@@ -115,40 +116,29 @@
 \newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
 \makeatother
 \renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
-\title{Lesson 2: Weighings, Logic and Geometric Constructions}
+\title{Homework 2: Weighings, Logic and Geometric Constructions}
 \begin{document} 
 %\setstretch{1}
 \maketitle
-
-
+\section{Homework}
 \begin{prb}
-There are six coins on the table, one of them is fake and weighs differently than the real ones. Show how to determine the fake coin using a scale at most 3 times. In this problem, the scale simply shows the weight of all coins on it in ounces.
+The are 12 knights and knaves in the room. The first person said: ``There are no knights in the room.'' The second person said ``There is at most one knight in the room.'' And so on, until the 12th person said ``There are at most eleven knights in the room.''
+How many knights were in the room?
 \end{prb}
 
 \begin{prb}
-Out of five coins three coins three are real and two are fake. Both fake coins weigh the same, but their weight is different from the weight of the real coins. What is the least number of times you have to use the balance scale to guarantee that you can find at least one real coin?
+Given a point $A$ outside of the line $\ell$ and a point $B$ on $\ell$, construct a circle which goes through $A$ and is tangent to $\ell$ at $B$.
 \end{prb}
 
-\begin{prb}
-A square is split into 100 rectangles using 9 vertical and 9 horizontal lines. Exactly 9 of those rectangles are squares -- show that two of those squares have the same side length. 
-\end{prb}
+\section{Reading}
 
-\begin{prb}
-Suppose you have five positive integers, and you computed all ten of their pairwise sums. Is it possible that the ten pairwise sums all have different last digits?
-\end{prb}
+\begin{sol}[H1.1]
+We definitely know that the last coin is fake since there is at least one fake coin and all real coins are to the right of all fake ones. Similarly, the first coins has to be real. Now let us compare coins $1,4$ with coins $2,3$ using the balance scale. If $2,3$ are lighter, they both have to be fake. If they are heavier, they must both be real. If the weights are equal, one of $2,3$ is real and one is fake. But then $2$ is real and $3$ is fake, and we are done.
+\end{sol}
 
-In the following two problems, ``construct'' means ``construct using straightedge and compass''.
-
-\begin{prb}
-\part{a} Given a line $\ell$ and a point $P$ on this line, show how to construct a line through $P$ perpendicular to $\ell$.
-\part{b} Do the same if the point $P$ is not on $\ell$.
-\end{prb}
-
-\begin{prb}
-Given a line $\ell$ and a point $P$ not on $\ell$, show how to construct a line through $P$ parallel to $\ell$.
-\end{prb}
-
-
+\begin{sol}[L1.4]
+We must have exactly 15 friendship pairs, each consisting of one knight and one knave. If two such friends are sitting next to each other, the knight says ``Yes'' and the knave says ``No''. If the are not sitting next to each other, the knight says ``No'' and the knave says ``Yes''. Either way, each pair produces one ``Yes'' and one ``No''. This means that there will be a total of 15 of each answer, and the answer to the problem is zero.
+\end{sol}
 
 
 
