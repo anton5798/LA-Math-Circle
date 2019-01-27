@@ -1,0 +1,143 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Homework 3: Weighings, Logic and Geometric Constructions}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{Reading}
+
+\begin{prb}[H2.1]
+Suppose there were exactly $k$ knights in the room. Then the people who told the truth are exactly the people from $(k+1)$'st up to the last. There are $12-k$ of them. But the people who told the truth are exactly the knights. Thus $k = 12 - k$, and so $k = 6$.
+\end{prb}
+
+\begin{prb}[L2.4]
+If the ten pairwise sums all have different last digits, their last digits must be exactly $0, 1, \ldots, 9$ in some order. Thus exactly 5 pairwise sums have an odd last digits, and so exactly 5 pairwise sums are odd. Suppose there are exactly $k$ odd numbers and $5 - k$ even numbers among our 5 positive integers. Since an odd sum necessarily occurs as a sum of an odd number and an even number, the number of odd numbers among the pairwise sums will be exactly $k(5-k)$. But this product cannot equal to 5 for any choice of $k$ between 0 and 5, which is a contradiction.
+\end{prb}
+
+\section{Homework}
+
+\begin{prb}
+Numbers from 1 to 1998 are written on the board. With one operation it is allowed to erase two numbers and write their difference instead. At some point there will be only one number left on the board. Can this number be 0?
+\end{prb}
+
+\begin{prb}
+Given two nonparallel lines and a point $M$ on the plane not lying on either of the lines, construct a point $X$ on one of the lines such that the segment $MX$ is split in half by the other line. 
+\end{prb}
+
+\end{document}
