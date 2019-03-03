@@ -1,0 +1,166 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{sol}{Solution}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Anton Lykov} 
+\title{Lesson 5, problem 3. Divisibility and remainders}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\begin{prb}
+The number $8^{2019}$ is written on the board. At each step it is replaced by the sum of its digits, until a 1-digit number is left. What is that one-digit number?
+\end{prb}
+
+\begin{sol}
+Let's first prove a lemma:
+\begin{lem}[Divisibility rule by $9$]
+Any nonnegative integer $A$ has the same remainder modulo $9$ (i.e., has the same remainder after dividing by $9$) as does the sum of its digits. 
+\end{lem}
+\begin{proof}
+Let's write $A = \overline{a_na_{n-1}...a_1a_0}$, where bar denotes that $a_n,...,a_0$ are digits in $A$. For example, if $a_2 = 9, a_1 = 3, a_0 = 7$, then $\overline{a_2a_1a_0} = 937$. Note that 
+$$A = 10^na_n + 10^{n-1}a_{n-1}+ ... + 10^1a_1 + 10^0a_0$$
+Looking at the difference $A - (a_n + a_{n-1} + ... + a_0)$, we see that the difference is divisible by $9$:
+\begin{align*}
+A - (a_n  +  a_{n-1} + ... + a_0) &= 10^na_n + 10^{n-1}a_{n-1}+ ... + 10^1a_1 + 10^0a_0 \\ 
+& - ( a_n +  a_{n-1} + ... +  a_1 +  a_0) \\
+&=  \underbrace{99...9}_{n-1} a_n + \underbrace{99...9}_{n-2} a_{n-1} + ... + 99a_2 + 9a_1\\
+&= 9*(\underbrace{11...1}_{n-1} a_n + \underbrace{11...1}_{n-2} a_{n-1} + ... + 11a_2 + a_1)
+\end{align*} 
+If $A$ and $(a_n  +  a_{n-1} + ... + a_0)$ had different remainders modulo $9$, their difference would have nonzero remainder modulo $9$, and thus would not be divisible by $9$. Therefore, $A$ and $(a_n  +  a_{n-1} + ... + a_0)$ have the same remainder modulo $9$. 
+\end{proof}
+
+\noindent
+Note that, in particular, this means that if the sum of the digits of $A$ is divisible by $9$ (remainder is $0$), then $A$ itself is divisible by $9$. This statement is probably more familiar to you! \\
+
+\noindent
+Let's return to the original problem. We can see an invariant:
+\textbf{The remainder of our number modulo 9}. Indeed, we just proved that the remainder stays the same when a number is substituted by the sum of its digits! 
+This means that if we find the remainder modulo $9$ of the original number $8^{2019}$, the remainder of the one-digit number left on the board would be the same.
+
+To finish the proof, we'll need one more thing. Suppose two numbers $A$ and $B$ have remainders $a$ and $b$ modulo $9$. Then the product $AB$ has the same remainder modulo $9$ as $ab$. Indeed, we can write:
+$$AB = (9k + a)(9n +b) = \underbrace{81kn + 9kb + 9an}_{divisible \; by \; 9} + ab$$
+
+
+We now need to find the remainder of $8^{2019}$ modulo 9.
+$8$ has remainder $8$ modulo $9$ (obviously). $8^2$ has remainder $1$ (check!). Then, by the fact above, $8^3$ has remainder $8$ modulo $9$. Similarly, $8^4$ has remainder $8$ and so on. We can see that remainder of $8^{n}$ will be $1$ if $n$ is even, and $8$ if $n$ is odd. Thus, $8^{2019}$ has remainder $8$, and so the remaining one-digit number's remainder is also $8$. The only such number is $8$.
+\end{sol}
+	
+
+
+
+
+\end{document}
