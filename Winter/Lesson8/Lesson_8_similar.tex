@@ -1,0 +1,159 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Lesson 8: Similar Triangles}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\begin{dfn}
+Two triangles are called \textit{similar} is they have the same angles.  
+\end{dfn}
+
+\begin{thm}
+Triangles $\triangle ABC$ and $\triangle A'B'C'$ are similar if and only if $$\frac{AB}{A'B'} = \frac{BC}{B'C'} = \frac{AC}{A'C'}$$
+In other words, they have the same ratio of sides. This common ration is called the \textit{similarity ratio}.
+\end{thm}
+\begin{thm}
+Triangles $\triangle ABC$ and $\triangle A'B'C'$ are similar if and only if $\angle BAC = \angle B'A'C'$ and $$\frac{AB}{A'B'} = \frac{AC}{A'C'}$$
+In other words, they share an angle and have the same ratio of sides adjacent to that angle.
+\end{thm}
+\begin{prb}
+In lecture we proved theorem 1. Now you need to prove theorem 2. Here are the suggested steps. If the triangles are already similar, you may use the already proven theorem 1 or the intercept theorem to get the condition on the ratios of sides. The more difficult direction is to show that if $\angle BAC = \angle B'A'C'$ and $$\frac{AB}{A'B'} = \frac{AC}{A'C'}$$ then the triangles are similar. To show this, you should mimic the proof of theorem 1. More concretely, consider consider the triangle $\triangle ABC$ and mark the point $M$ on the ray $AB$ such that $AM = A'B'$. Then draw a line through $M$ parallel to $BC$, and let $N$ be the intersection of this line with the ray $AC$. Show that $\triangle ABC \sim \triangle AMN$, then use the intercept theorem to show that $AN = A'C'$. From there deduce that $\triangle AMN = \triangle A'B'C'$, and conclude the proof.
+\end{prb}
+
+\begin{prb}
+In this problem you may use both theorem 1 and theorem 2, even if you did not solve problem 1.\\
+\part{a} Suppose $\triangle ABC$ and $\triangle A'B'C'$ are similar. Let $AD$ and $A'D'$ be the angle bisectors of each triangle. Show that $$\frac{AD}{A'D'} = \frac{AB}{A'B'}$$
+\textit{Hint: Show that $\triangle BAD \sim \triangle B'A'D'$.}
+\part{b} In the same setup, let $AM$ and $A'M'$ be the medians of each triangle. Show that $$\frac{AM}{A'M'} = \frac{AB}{A'B'}$$
+\end{prb}
+
+\begin{prb}
+In a round-robin tournament with four teams you get 2 points for winning, 1 point for a draw and 0 points for losing. If team $A$ had 5 points, team $B$ had 2 points and team $C$ had 1 point, which place did team $D$ get?
+\end{prb}
+
+\begin{prb}
+Let $n$ be a positive integer divisible by 500. Show that the sum of even divisors of $n$ is greater than the sum of odd divisors of $n$. 
+\end{prb}
+
+\begin{prb}
+Ten positive integers are written on the board, and it turnes out that all their last digits are distinct and all their second-to-last digits are also distinct. Show that their sum cannot be a perfect square. 
+\end{prb}
+
+
+\end{document}
