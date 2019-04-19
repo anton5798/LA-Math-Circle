@@ -13,7 +13,7 @@
 \usepackage{pictexwd,dcpic}
 \usepackage{tikz}
 \usepackage{tikz-cd}
-\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1in]{geometry}
 \usepackage{breqn}
 \newtheoremstyle{perfect}% name
   {}%         Space above, empty = `usual value'
@@ -115,37 +115,30 @@
 \newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
 \makeatother
 \renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
-\title{Lesson 2: Combinations and Pascal's Triangle }
+\title{Homework 2: Combinations and Pascal's Triangle}
 \begin{document} 
 %\setstretch{1}
 \maketitle
 
-\noindent Recall from the lecture that the Pascal's triangle is a way of writing numbers $n \choose k$ in a shape of a triangle where $n \choose k$ is the $k$-th number in the $n$-th row.
- 
+\section{Homework}
+
 \begin{prb}
-Show that the $k$-th number in the $n$-th row of Pascal's triangle is equal to the number of ways to descend from the top of the triangle to the $k$-th position in the $n$-th row while moving down-right or down-left every time.
+How many ways are there to descend from the top of Pascal's triangle to the $n$-th row?
 \end{prb}
 
 \begin{prb}
-Show that if $n \geq 4$ and $2 \leq k \leq n - 2$, then $${n \choose k} = {{n-2} \choose {k-2}} + 2{{n-2} \choose {k-1}} +{{n-2} \choose {k}}$$
+Let $A, B$ be points on a circle, and $T$ be a point on the line $AB$ outside of the circle. Let $TC$ be the tangent from $T$ to the circle. Show that $TC^2 = TA\cdot TB$
 \end{prb}
 
-\begin{prb}
-If the ratios of three binomial coefficients are $${{n+1} \choose {m+1}} : {{n+1} \choose {m}} : {{n+1} \choose {m-1}} = 5 : 5 : 3$$ find $n,m$.
-\end{prb}
+\section{Reading}
 
-\begin{prb}
-\part{a} Show that if $p$ is prime and $1 \leq k < p$, then $$p \mid {p \choose k}$$
-\part{b} Show that if $p$ is prime, then $$p \mid {2p \choose p} - 2$$
-\end{prb}
+\begin{cprb}{3}
+\part{a} \textit{Show that identity } $${n \choose k} = {n-1 \choose k-1} + {n-1 \choose k}$$ \textit{algebraically}.
+\begin{align*}{n-1 \choose k-1} + {n-1 \choose k} & = \frac{(n-1)!}{(n-k)!(k-1)!} +  \frac{(n-1)!}{(n-k-1)!(k)!} \\ & = \frac{(n-1)!k}{(n-k)!k!} + \frac{(n-1)!(n-k)}{(n-k)!k!}  \\ & = \frac{(n-1)!(n-k+k)}{(n-k)!k!} = \frac{n!}{(n-k)!k!} = {n \choose k}\end{align*}
+\end{cprb}
 
-\begin{prb}
-Let $ABCD$ be a cyclic quadrilateral, and let $T$ be the intersection of lines $AB$ and $CD$. Assume $A$ lies on the segment $TB$ and $D$ lies on the segment $TC$. Show that $TA\cdot TB = TC \cdot TD$.
-\end{prb}
 
-\begin{prb}
-Let $BB_1$ and $CC_1$ be altitudes in a triangle $\triangle ABC$. Show that the tangent line at $A$ to the circumcircle of $\triangle ABC$ is parallel to $B_1C_1$.
-\end{prb}
+
 
 
 \end{document}
