@@ -1,0 +1,161 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{sol}{Solution}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Homework 2: Combinations and Pascal's Triangle}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{Homework}
+
+\begin{prb}
+How many ways are there to arrange 2 green, 2 red and 2 blue balls in a row so that not two balls of the same color are adjacent to each other?
+\end{prb}
+
+\begin{prb}
+Let $T$ be a point inside a circle, and $A, B, C, D$ be points on the circle such that lines $AB$ and $CD$ intersect at $T$. Show that $AT\cdot TB = CT \cdot TD$.
+\end{prb}
+
+\section{Reading}
+
+\begin{sol}[L2.3]
+\textit{If the ratios of three binomial coefficients are} $${{n+1} \choose {m+1}} : {{n+1} \choose {m}} : {{n+1} \choose {m-1}} = 5 : 5 : 3$$ \textit{find $n,m$}.
+Since $${{n+1} \choose {m+1}} : {{n+1} \choose {m}} : {{n+1} \choose {m-1}} = 5 : 5 : 3$$ we know that $${{n+1} \choose {m+1}} = {{n+1} \choose {m}}$$
+Writing it out we get 
+$$\frac{(n+1)!}{(m+1)!(n-m)!} = \frac{(n+1)!}{(m)!(n+1-m)!}$$
+$$(m)!(n+1-m)! = (m+1)!(n-m)!$$
+Cancelling out $m!(n-m)!$ we get $n+1-m = m+1$ or $n = 2m$.
+Now we use 
+$${{n+1} \choose {m}} : {{n+1} \choose {m-1}} = 5 : 3$$ 
+to do the same factorial calculations:
+$$\frac{3(n+1)!}{m!(n+1-m)!} = \frac{5(n+1)!}{(m-1)!(n+2-m)!}$$
+$$3(m-1)!(n+2-m)! = 5m!(n+1-m)!$$
+Cancelling out $(m-1)!(n+1-m)!$ we get $3(n+2-m) = 5m$. Plugging in $n= 2m$ we have $$3m + 6 = 5m$$
+$$m = 3, n = 6$$
+and we are done.
+\end{sol}
+
+\begin{sol}[H2.1]
+If we want to descend to the $n$-th row of Pascal's triangle, we have to make $n$ total steps, since every step takes us one row down. At each step we can choose to go left or right, so the number of ways is $2^n$.
+\end{sol}
+
+
+
+
+
+\end{document}
