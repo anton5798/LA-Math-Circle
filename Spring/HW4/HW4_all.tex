@@ -1,0 +1,154 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{sol}{Solution}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Homework 4: Combinations and Pascal's Triangle}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{Homework}
+
+\begin{prb}
+How many ways are there to split 200 passengers into 3 train carts?
+\end{prb}
+
+\begin{prb}
+Let $ABCD$ be a trapezoid with bases $AD$ and $BC$ such that $BC < AD$. Let $T$ be the intersection of lines $AB$ and $CD$. Let $O$ be the intersection of diagonals of $ABCD$. Show that $TA\cdot BO = TB\cdot OD$.
+\end{prb}
+
+\section{Reading}
+
+\begin{sol}[H3.1]
+\textit{How many ways are there to arrange 2 green, 2 red and 2 blue balls in a row so that not two balls of the same color are adjacent to each other?}
+\begin{proof}
+We have 3 choices to pick the color of the first ball, and 2 choices to pick the color of the second one since it cannot be the same color as the first one. That is 6 choices in total, and if we remember this factor of 6 we can assume that the first ball is blue and the second one is red. Now the third ball can be either green or blue. If it is green, we have one ball of each color left for the last 3 spots. Then the 4th ball can be blue or red -- 2 choices, and the remaining red and green balls can be arranged in any of the two possible ways in the last two spots. Therefore if the third ball is green we have 4 possibilities for the configuration of the last 3 balls. Now suppose the third ball is blue. Then we have to fit two green balls in the last three, and to make sure they are not adjacent they have to be in positions 4 and 6. Then the 5th ball must be red, and we only get one way. Thus there are 5 total ways to configure the last 4 balls, and the total number of possibilities is $6 \cdot 5 = 30$.
+\end{proof}
+\end{sol}
+
+\begin{sol}[H3.2]
+\textit{Let $T$ be a point inside a circle, and $A, B, C, D$ be points on the circle such that lines $AB$ and $CD$ intersect at $T$. Show that $AT\cdot TB = CT \cdot TD$.}
+\begin{proof}
+Since $ACBD$ is a cyclic quadrilateral, we know that $\angle ACD = \angle ABD$. Similarly $\angle CAB = \angle CDB$, and thus $\triangle ATC \sim \triangle DTB$. Therefore $$\frac{AT}{TD} = \frac{TC}{TB}$$ which implies $TA\cdot TB = TC \cdot TD$.
+\end{proof}
+\end{sol}
+
+
+
+
+
+\end{document}
