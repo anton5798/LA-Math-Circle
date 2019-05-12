@@ -1,0 +1,154 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{sol}{Solution}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Homework 6: Young Tableaux}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{Homework}
+
+\begin{prb}
+How many ways are there to create an exam where every problem is worth at most 3 points and the whole exam is worth 100 points? Consider the problems unlabelled.
+\end{prb}
+
+\begin{prb}
+Let $\triangle OHA$ be a right triangle with $\angle OHA= 90^\circ$. Let $H'$ be a point on the segment $OH$, and let $A'$ be the intersection of the circle with diameter $OH'$ with the segment $OA$. Show that $OA'\cdot OA = OH' \cdot OH$
+\end{prb}
+
+\section{Reading}
+
+\begin{sol}[L5.5]
+\textit{Let $K$ be a point on the side $CD$ of a square $ABCD$ such that $CK/KD = 1/2$. If the side length of the square is 1, find the length of the perpendicular from $C$ to the line $AK$. You may use the Pythagorean theorem.}
+\begin{proof}
+Let $H$ be the foot of the perpendicular from $C$ on the line $AK$. Then since $\angle KAD = \angle CHK = 90^\circ$ and $\angle AKD = \angle CKH$ we get $\triangle AKD \cong \triangle CKH$. Therefore $CH/AD = CK/AK$. We know that $AD = 1$ and $CK = 1/3$. By Pythagorean theorem, we also get $$AK = \sqrt{AD^2+DK^2} = \sqrt{1^2+\frac{2}{3}^2} = \frac{\sqrt{13}}{3}$$ Then we have $$CH = \frac{AD\cdot CK}{AK} = \frac{1/3}{\sqrt{13}/3} = \frac{\sqrt{13}}{13}$$
+\end{proof}
+\end{sol}
+
+\begin{sol}[H5.1]
+\textit{How many ways are there to distribute seven white and two black balls into 9 holes? The balls of the same color are indistinguishable, the holes are distinguishable, and some holes can remain empty.}
+\begin{proof}
+First of all, note that black and white balls are independent from each other. So we have to compute the number of ways to distribute the black balls, the number of ways to compute the white balls, and multiply those two together. For the black balls, we have to compute the number of ways to break up 2 (total number of black balls) into 9 possibly zero summands. Then number is equal to $${{9+2-1} \choose {9-1}} = {10 \choose 2}$$ The number of ways to distribute the white balls is similarly equal $${{9+7-1} \choose {9-1}} = {15 \choose 7}$$ Thus the total answer is $${10 \choose 2}{15 \choose 7} = 289,575$$
+\end{proof}
+\end{sol}
+
+
+
+
+
+\end{document}
