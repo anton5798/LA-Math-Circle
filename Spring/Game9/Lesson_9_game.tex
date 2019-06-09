@@ -1,0 +1,187 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+%\usepackage{centernot}
+%\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+%\usepackage{bm}
+%\usepackage[mathscr]{euscript}
+%\usepackage{pictexwd,dcpic}
+%\usepackage{tikz}
+%\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}
+
+
+\author{Anton Lykov \& Konstantin Miagkov} 
+\title{Lesson 9: Game}
+\begin{document} 
+%\setstretch{1}
+\setlength{\parindent}{0cm}
+\maketitle
+
+\begin{prb}
+Three Ministers are standing in a row -- the Minister of Truth, the Minister of Lies and the Minister of Diplomacy. The Minister of Trith always tells the truth, the Minister of Lies always lies and the Minister of Diplomacy can do both. The first Minister is asked: "Who is your neighbor?". He says: "The Minister of Truth". The second one is asked: "Who are you"? He answer: "The Minister of Diplomacy".  The first Minister is asked: "Who is your neighbor?". He says: "The Minister of Lies". Which Minister is standing in the middle?
+\end{prb}
+
+
+\begin{prb}
+How many solutions does the equation $M\cdot A \cdot (T + H + S)$ have if different letters correspond to different digits (each letter is just one digit)?
+\end{prb}
+
+\begin{prb}
+What is the largest possible number of Fridays in a year?
+\end{prb}
+
+\begin{prb}
+A tourist is driving from city $A$ to city $B$. Along the road there are 10 attractions, each of which he can choose to stop at or not. How many different journeys can the tourist have?
+\end{prb}
+
+\begin{prb}
+A 20 pound watermelon consisted $99\%$ of water. After lying out on the sun, it consists only $98\%$ of water. How much does the watermelon weigh now?
+\end{prb}
+
+\begin{prb}
+Find all integers $x$ such that $x^2+2x$ is a perfect square.
+\end{prb}
+
+
+
+\begin{prb}
+Let $p$ be a prime number such that the remainder of $p$ divided by $60$ is composite. Find that remainder.
+\end{prb}
+
+\begin{prb}
+Given that $(a+b)/(a-b)=3$, find $(a^2+b^2)/(a^2-b^2)$.
+\end{prb}
+
+\begin{prb}
+How many ways are there to place $5$ queens on a $5 \times 5$ board so that no two queens are attacking each other?
+\end{prb}
+
+\begin{prb}
+A triangle is cut into 6 smaller triangles by its angle bisectors. How many of those smaller triangle could be equilateral? List all possibilities. 
+\end{prb}
+
+\begin{prb}
+Three friends, Ethan, Eilon, and Konstantin are playing tennis. After each game played, the loser of that game is replaced by the third person. At the end of a session, Konstantin played 27 games and Eilon played 13 games. How many games did Ethan play?
+\end{prb}
+
+\begin{prb}
+How many functions $f : A \to A$ are there satisfying $f(a) = a$ for all $a \in A$ if $A = \{1,2,3,4,5,6,7\}$?
+\end{prb} 
+
+
+\begin{prb}
+Let $ABCD$ be a square and $P$ be a point inside such that $\angle PDA = \angle PAD = 15^\circ$. Find $\angle BPC$.
+\end{prb}
+
+
+\begin{prb}
+In how many ways can you choose three elements from the set $\{1,2,3,4,5,6,7,8,9,10,11\}$ such that the sum of these three elements is divisible by 3?
+\end{prb}
+
+\begin{prb}
+Let $ABCD$ be a square, and $F$ be the midpoint of $BC$. Let $AE$ be the altitude of the triangle $\triangle AFD$. Find $\angle CEF$.
+\end{prb} 
+
+\begin{prb}
+Pick three points on the circle at random (uniformly). What is the probability that the triangle formed by the three points contains the center of the circle?
+\end{prb}
+
+\begin{prb}
+Each side of a cube has a positive integer written on it. In every vertex of the cube we write the product of all the integers on the sides containing that vertex. The sum of all numbers in the vertices turned out to be 1001. Find the sum of the numbers on all sides of the cube.
+\end{prb} 
+
+\begin{prb}
+What is the maximum number of pieces a donut can be cut into using three straight cuts?
+\end{prb}
+
+\begin{prb}
+Find all positive integers which are equal to $33$ times the sum of their digits.
+\end{prb}
+
+
+\begin{prb}
+Count the number of subsets of $\{1,\ldots, 20\}$ of size 8 which do not contain any pair of consecutive numbers. You answer may be in the form $n \choose k$.
+\end{prb}
+
+
+
+\end{document}
