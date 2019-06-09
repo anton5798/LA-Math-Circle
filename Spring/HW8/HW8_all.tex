@@ -1,0 +1,144 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{sol}{Solution}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Konstantin Miagkov} 
+\title{Homework 8: Miscellaneous}
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+\section{Homework}
+
+\begin{prb}
+Consider the sequence of integers which starts with numbers 1,9,8,2, and where each subsequent number is the last digit of the sum of the previous four. Will the four consecutive numbers 3,0,3,4 ever occur in this sequence?
+\end{prb}
+
+\begin{prb}
+$x_1 > x_2$ and $y_1 > y_2$. Which is bigger -- $x_1y_1 + x_2y_2$ or $x_1y_2 + x_2y_1$?
+\end{prb}
+
+\section{Reading}
+
+\begin{sol}[H7.1]
+\textit{Let $d(n)$ be the number of partitions of $n$ into distinct odd parts. Show that $p(n) - d(n)$ is even for all $n$.}
+\begin{proof}
+We can pair up each partition in $p(n)$ to the partition whose Young tableaux is symmetric with respect to the diagonal. The only partitions which do not get a distinct pair are the ones Young tableaux is already symmetrical with respect to the diagonal. By L6.5 the number of those is equal to $d(n)$, so the partitions counted by $p(n) - d(n)$ all get paired up. Then there is an even number of them.
+\end{proof}
+\end{sol}
+
+
+\end{document}
