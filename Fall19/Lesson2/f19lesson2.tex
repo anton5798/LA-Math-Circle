@@ -123,14 +123,13 @@
 \begin{prb}
 Let $A = \{57, 91, 179, 239\}, B = \{91, 239, 2014\}, C = \{2, 57, 239, 2014\},
 D = \{2, 91, 2014, 2017\}$ and $E$ is the set of all flying crocodiles. 
-Find the following:
+Draw the Venn diagram and find the following sets:
 \begin{enumerate}
 \item  $A \cap B$
 \item $(A \cap B) \cup D$
 \item $C \cap (D \cap B)$
 \item $(A \cup B) \cap (C \cup D)$
 \item $(A \cap B) \cup (C \cap D)$ 
-\item $(D \cup A) \cap (C \cup B)$ 
 \item $(A \cap (B \cap C)) \cap D$
 \item $(A \cup (B \cap C)) \cap D$
 \item $(C \cap A) \cup ((A \cup (C \cap D)) \cap B)$
@@ -153,11 +152,21 @@ Calculate the probability of randomly rearranging tiles with the letters of FORM
 \end{prb} 
 
 \begin{prb}
-Calculate the probability of rolling a six-sided three times and getting a sum of three outcomes equal to 10.
+Calculate the probability of rolling a six-sided die three times and getting a sum of three outcomes equal to 10.
 \end{prb} 
 
+
 \begin{prb}
-For any sets $A, B$, prove all of the following:
+Let $\Omega = \{\omega_1, \omega_2, ..., \omega_n\}$ be a sample space. Each $\omega_i$ is called an \textbf{elementary (atomic) event}. Recall from the lecture that probability function $P$ satisfies 2 axioms:
+\begin{enumerate}
+\item $P(\omega) \geq 0$ for any $\omega \in \Omega$
+\item $P(\omega_1) + P(\omega_2) + ... + P(\omega_n) = 1$
+\end{enumerate}
+\textbf{Probability} of any \textbf{event} $A = \{\omega_{k_1}, \omega_{k_2}, ..., \omega_{k_m}\} \subset \Omega$ is defined as the sum of probabilities of its elementary events:
+$$P(A) = P(\omega_{k_1}) + P(\omega_{k_2}) + ... + P(\omega_{k_m})$$
+
+\noindent
+For any subsets $A, B \subset \Omega$, prove the following:
 \begin{enumerate}
 \item $P(\varnothing) = 0$
 \item $0 \leq P(A) \leq 1$
@@ -168,7 +177,7 @@ For any sets $A, B$, prove all of the following:
 
 
 \begin{prb}
-In a bucket, there are $m$ white and $(n-m)$ black balls. Each turn, Michael and Peter take one ball from the bucket, Michael starts. The one who takes the white ball wins. Find the probability of Peter winning this game if:
+In a bucket, there are $m$ white and $(n-m)$ black balls. Each turn, Michael and Peter take one ball from the bucket, Michael starts. The one who takes the white ball first wins. Find the probability of Peter winning this game if:
 \begin{enumerate}
 \item $n=5, m=1$
 \item $n=7, m=2$
