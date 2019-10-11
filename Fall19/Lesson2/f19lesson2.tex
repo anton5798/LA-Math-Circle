@@ -31,6 +31,7 @@
 \newtheorem{exm}{Example}
 \newtheorem{prop}{Proposition}
 \newtheorem{crl}{Corollary}
+\newtheorem{Remark}{Remark}
 \newtheorem{rem}{Reminder}
 \newtheorem{prb}{Problem}
 \newtheorem{exe}{Exercise}
@@ -120,6 +121,16 @@
 %\setstretch{1}
 \maketitle
 
+\begin{dfn}
+The \textbf{union} of two sets $A$ and $B$ is a set consisting of all elements that belong to either $A$ or $B$, and is denoted by $A \cup B$.\\
+\\
+The \textbf{intersection} of two sets $A$ and $B$ is a set consisting of all elements that belong to both $A$ and $B$, and is denoted by $A \cap B$. \\ 
+\\
+The \textbf{difference} of two sets $A$ and $B$ is a set consisting of all elements that belong to $A$, but not to $B$, and is denoted by $A \backslash B$. \\
+\\
+The \textbf{complement} of a set $A$ with respect to some universal set $U$ is the difference $U \backslash A$, denoted by $A^c$. In this handout, the universal set will be the sample space (see Problem 5).
+\end{dfn}
+
 \begin{prb}
 Let $A = \{57, 91, 179, 239\}, B = \{91, 239, 2014\}, C = \{2, 57, 239, 2014\},
 D = \{2, 91, 2014, 2017\}$ and $E$ is the set of all flying crocodiles. 
@@ -157,16 +168,15 @@ Calculate the probability of rolling a six-sided die three times and getting a s
 
 
 \begin{prb}
-Let $\Omega = \{\omega_1, \omega_2, ..., \omega_n\}$ be a sample space. Each $\omega_i$ is called an \textbf{elementary (atomic) event}. Recall from the lecture that probability function $P$ satisfies 2 axioms:
+Let $\Omega = \{\omega_1, \omega_2, ..., \omega_n\}$ be a \textbf{sample space}. Each $\omega_i$ is called an \textbf{elementary (atomic) event}. Recall from lecture the definition of \textbf{Probability function}. Given a set $A \subset \Omega$, the probability function assigns a number $P(A)$ to the set A. A set $A \subset \Omega$ is called an \textbf{event}. The number $P(A)$ denotes the probability that the event A will occur. The probability law satisfies the axioms below:
 \begin{enumerate}
-\item $P(\omega) \geq 0$ for any $\omega \in \Omega$
-\item $P(\omega_1) + P(\omega_2) + ... + P(\omega_n) = 1$
+\item $P(A) \geq 0$ for any event $A \subset \Omega$.
+\item $P(A \cup B) = P(A) + P(B)$, if $A$ and $B$ are disjoint events (i.e. $A \cap B = \varnothing$).
+\item $P(\Omega) = 1$.
 \end{enumerate}
-\textbf{Probability} of any \textbf{event} $A = \{\omega_{k_1}, \omega_{k_2}, ..., \omega_{k_m}\} \subset \Omega$ is defined as the sum of probabilities of its elementary events:
-$$P(A) = P(\omega_{k_1}) + P(\omega_{k_2}) + ... + P(\omega_{k_m})$$
 
 \noindent
-For any subsets $A, B \subset \Omega$, prove the following:
+Recall from lecture that $A^c = \Omega \backslash A$. For any events $A, B \subset \Omega$, prove the following:
 \begin{enumerate}
 \item $P(\varnothing) = 0$
 \item $0 \leq P(A) \leq 1$
@@ -175,13 +185,21 @@ For any subsets $A, B \subset \Omega$, prove the following:
 \end{enumerate}
 \end{prb}
 
+\begin{exm}
+Suppose you are flip a fair coin twice. In this experiment, the sample space looks like this: 
+\{TT, TH, HT, HH\}. The sample space represents all possible outcomes of your experiments. The probability of each elementary event is $\frac{1}{4}$. We can also look at non-elementary events. For example, let $A$ be an event that there is at least one H. Then A = \{TH, HT, HH\}, and $P(A) = \frac{3}{4}$. 
+\end{exm}
+
+\begin{Remark}
+In problems 6 and 7, describe the sample space and probability function using the definitions above. Also, describe events you are using in your solution.
+\end{Remark}
 
 \begin{prb}
 In a bucket, there are $m$ white and $(n-m)$ black balls. Each turn, Michael and Peter take one ball from the bucket, Michael starts. The one who takes the white ball first wins. Find the probability of Peter winning this game if:
 \begin{enumerate}
 \item $n=5, m=1$
 \item $n=7, m=2$
-\item $n,m$ - any natural numbers (find a formula of $n$ and $m$).
+\item For any natural numbers $n,m$, find the desired probability as a formula of $n,m$.
 \end{enumerate}
 \end{prb}
 
