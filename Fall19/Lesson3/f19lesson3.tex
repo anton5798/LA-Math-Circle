@@ -1,0 +1,207 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage{amsmath}
+\usepackage[retainorgcmds]{IEEEtrantools}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsthm}
+\usepackage{centernot}
+\usepackage{setspace}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{bm}
+\usepackage[mathscr]{euscript}
+\usepackage{pictexwd,dcpic}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage[margin=1in]{geometry}
+\usepackage{breqn}
+\newtheoremstyle{perfect}% name
+  {}%         Space above, empty = `usual value'
+  {}%         Space below
+  {}% Body font
+  {}%         Indent amount (empty = no indent, \parindent = para indent)
+  {\bfseries}% Thm head font
+  {.}%        Punctuation after thm head
+  {\newline}% Space after thm head: \newline = linebreak
+  {}%         Thm head spec
+\theoremstyle{perfect}
+\newtheorem{lem}{Lemma}
+\newtheorem{thm}{Theorem}
+\newtheorem{dfn}{Definition}
+\newtheorem{exm}{Example}
+\newtheorem{prop}{Proposition}
+\newtheorem{crl}{Corollary}
+\newtheorem{Remark}{Remark}
+\newtheorem{rem}{Reminder}
+\newtheorem{prb}{Problem}
+\newtheorem{exe}{Exercise}
+\makeatletter
+\newenvironment{cprb}[1]
+  {\count@\c@prb
+   \global\c@prb#1
+    \global\advance\c@prb\m@ne
+   \prb}
+  {\endprb
+   \global\c@prb\count@}
+\makeatother
+\makeatletter
+\newenvironment{cexe}[1]
+  {\count@\c@exe
+   \global\c@exe#1
+    \global\advance\c@exe\m@ne
+   \exe}
+  {\endexe
+   \global\c@exe\count@}
+\makeatother
+\newcommand{\varline}{0}
+\newcommand{\gen}[1]{\left< #1 \right>}
+\newcommand{\ngen}[1]{\gen{\gen{#1}}}
+\newcommand{\ov}[1]{\,\overline{#1}}
+\DeclareMathOperator{\tor}{Tor}
+\DeclareMathOperator{\aut}{Aut}
+\DeclareMathOperator{\inn}{Inn}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\imm}{Im}
+\DeclareMathOperator{\ad}{ad}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\SO}{SO}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\SU}{SU}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\PGL}{PGL}
+\DeclareMathOperator{\re}{Re}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\sym}{Sym}
+\DeclareMathOperator{\ind}{Ind}
+\DeclareMathOperator{\res}{Res}
+\DeclareMathOperator{\sgn}{sgn}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\colim}{colim}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\intr}{int}
+\DeclareMathOperator{\extr}{ext}
+\DeclareMathOperator{\chr}{char}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\hol}{Hol}
+\DeclareMathOperator{\spec}{Spec}
+\renewcommand{\Re}{\re}
+\renewcommand{\Im}{\imm}
+\newcommand{\eps}{\varepsilon}
+\newcommand{\Mor}{\text{Mor}}
+\newcommand{\cir}[1]{\mathrlap{\bigcirc}{\;#1}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\lnorm}{\vartriangleleft}
+\newcommand{\rnorm}{\vartriangleright}
+\newcommand{\id}{\text{id}}
+\newcommand{\dd}[1]{\mathrm{d}{#1}}
+\newcommand{\p}[1]{\left( #1 \right)}
+\newcommand{\parder}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\legendre}[2]{\left(\frac{#1}{#2}\right)}
+\makeatletter
+\renewcommand\part[1]{
+\ifnum\pdfstrcmp{\varline}{1}=0
+    \vspace{.10in}\textbf{\\#1)}
+  \else
+    \textbf{#1)}
+  \fi\renewcommand{\varline}{1}}
+\makeatother
+\makeatletter
+\newcommand{\tpmod}[1]{{\@displayfalse\pmod{#1}}}
+\makeatother
+\renewcommand{\restriction}{\mathord{\upharpoonright}}\author{Anton Lykov} 
+\title{Lesson 3: Probability II }
+\begin{document} 
+%\setstretch{1}
+\maketitle
+
+
+\begin{dfn}[\textbf{Conditional Probability}]
+Let $A, B \subset \Omega$ be two events, such that $\mathbf{P}(B) \neq 0$. 
+The conditional probability of A given B, written $\mathbf{P}(A|B)$, 
+is the probability of A given that B happened:
+\begin{equation}\label{condprob}
+\mathbf{P}(A|B) = \frac{\mathbf{P}(A \cap B)}{\mathbf{P}(B)}
+\end{equation}
+
+\noindent
+In particular, if $\Omega$ is a finite sample space and every elementary outcome in $\Omega$ is equally likely, then 
+\begin{equation}
+\mathbf{P}(A|B) = \frac{|A \cap B|}{|B|}
+\end{equation}
+Recall that $|A|$ means the number of elements in $A$. 
+\end{dfn}
+
+\begin{thm}[\textbf{Law of Total Probability}]
+Suppose that $A, B_1, \dots , B_n \subset \Omega$, with $B_1, \dots, B_n$ pairwise
+disjoint (i.e. $B_i \cap B_j = \varnothing$ if $i \neq j$) and $B_1 \cup \dots \cup B_n = \Omega$. Then
+\begin{equation}
+\mathbf{P}(A) = \sum_{i=1}^n \mathbf{P}(A|B_i)\mathbf{P}(B_i)
+\end{equation}
+\end{thm}
+
+
+
+\section{Introductory problems}
+
+\begin{Remark}
+In each problem below, describe how you are using conditional probability and/or the Law of Total Probability.
+\end{Remark}
+
+\begin{prb}
+\textbf{a)} You roll a 6-sided die and someone (correctly) tells you that the roll was even. What would the probability of getting a 6 be (taking this information into account)? \\
+\textbf{b)} Suppose you roll a 6-sided die twice. Given that the sum of the two numbers is $\geq 8$, what is the probability that the sum is 12? Compare this with the 
+probability of getting a sum of 12 with no additional information given.
+\end{prb}
+
+\begin{prb}
+Suppose you flip a fair coin 7 times. Given that the first 3 flips are
+heads, what is the probability of getting exactly 4 heads total?
+\end{prb}
+
+\begin{prb}
+Prove the Law of Total Probability.
+\end{prb}
+
+\begin{prb}
+Two lines $l, k$ are perpendicular to each other and intersect at $O$. You roll a $10$-sided fair die and pick a point $A$ on $l$ such that $|AO|$ is equal to the number on the die. Then you roll the die again and similarly pick point $B$ on $k$. What is the probability that the area of $\triangle AOB$ is greater than $20$? 
+\end{prb}
+
+
+
+\section{Advanced problems}
+
+\begin{prb}
+Suppose you have three bags: bag A with 1 red and 3 green balls, bag B with 2R, 2G, and bag C
+with 1R, 4G. You roll a die and then pick two balls from bag A if you roll $1- 3$, B if you
+roll $4-5$, and C if you roll 6. Find the probability that both balls are the same color.
+\end{prb}
+
+\begin{prb}
+Alex wants to celebrate her birthday with friends. Dad offers her a deal: ``There are $3$ days until your birthday. In each of these days, you play a chess game with me or mom, alternating opponents, one game per day. You can choose who to play with first. If you win $2$ games in a row -- you can celebrate with friends."
+Who should Alex play first, if dad plays better than mom (i.e the probability of winning against dad is less)? 
+\end{prb}
+
+\begin{prb}[\textbf{Bayes' Rule}]
+Let $A, B \subset \Omega$ be events such that $\mathbf{P}(B) > 0$. Then
+\begin{equation}
+\mathbf{P}(A | B) = \frac{ \mathbf{P}(B |A)\mathbf{P}(A)}{\mathbf{P}(B)}
+\end{equation}
+\end{prb}
+
+\begin{prb}
+A test for a certain rare disease is assumed to be correct 95\% of the time: if a person has the disease, the test results are positive with probability $0.95$, and if the person does not have the disease, the test results are negative with probability 0.95. The disease affects 1 out of every 1000 people in the population randomly. Given that the person just tested positive, what is the probability of actually having the disease? 
+\end{prb}
+
+
+ 
+
+\end{document}
+
+
