@@ -128,13 +128,13 @@
 A random variable is a quantifiable experiment. That
 is, an experiment with numerical outcomes. 
 Random variables are usually denoted by capital letters (X, Y, Z, etc.)
-For example, we could define random variables $X$ = the number of heads
+For example, we could define random variable $X$ = the number of heads
 after tossing $5$ fair coins.
 \end{dfn}
 
 
 \begin{dfn}[\textbf{Random Variable - formal}]
-Let $\Omega$ be a sample space, and $\PP$ be a Probability Function on $\Omega$. A \textbf{random variable} X is a function $X : \Omega \to \R$.
+Let $\Omega$ be a sample space, and $\PP$ be a Probability Function on $\Omega$. A \textbf{random variable} X is a function $X : \Omega \to \R$. This is, $X$ assigns a number to each elementary outcome.
 \end{dfn}
 
 
@@ -149,12 +149,11 @@ $$\sum_{x \in \R} x p_X(x)$$
 \end{dfn}
 
 
-
 \section{Introductory problems}
 
 
 \begin{prb}
-Let X be a discrete random variable on a sample space $\Omega$. Prove that $p_X(x) = 1$.
+Let X be a discrete random variable on a finite sample space $\Omega$. Prove that $\sum_{x \in \R} p_X(x) = 1$.
 \end{prb}
 
 \begin{prb}
@@ -162,30 +161,38 @@ You roll an unfair seven-sided die with faces 1, 2, ..., 7, where the probabilit
 \end{prb}
 
 \begin{prb}
-Suppose your friend offers you the following deal: A six-sided die is rolled and you get to wager any number of jolly ranchers on the result being even or odd. If you are correct, you win as many jolly ranchers as you wagered. If you are incorrect, you lose what you wagered. Assuming you just went trick-or-treating and have an infinite supply of jolly ranchers, come up with a strategy with a positive expected value of jolly ranchers won and show that it works. 
+Suppose your friend offers you the following deal: a six-sided die is rolled and you get to wager any number of jolly ranchers on the result being even or odd. If you are correct, you win as many jolly ranchers as you wagered. If you are incorrect, you lose what you wagered. 
+Assuming you just went trick-or-treating and have an infinite supply of jolly ranchers, come up with a strategy with a positive expected value of jolly ranchers won and show that it works. 
+\end{prb}
+
+\begin{prb}
+You are given a ten sided die with values 1-10, and you are allowed to roll it either once or twice.
+After the first dice roll you note the score and have to make a decision whether you want to try a second roll or not.
+In case you decided to roll a second time, you add the values from both dices to get your final score.
+If your score is less than or equal to 13 you will receive the equivalent amount in pounds as a payout. However if your score exceeds 13 you won't receive a payout.
+What would be the optimal strategy? \\
+\textbf{Hint:} What is the expected value in each case?
 \end{prb}
 
 
 
 \section{Advanced problems}
 
-
 \begin{prb}
-Suppose you flip a biased coin that lands heads with probability $p$. Let $X$ be the number of heads in $3$ throws. Find the probability mass function of $X$, $p(X)$, as well as the expected value of X, $\EE(X)$.
+Suppose you flip a biased coin that lands heads with probability $p$. Let $X$ be the number of heads in $3$ throws. Find the probability mass function of $X$, $p_X$, as well as the expected value of X, $\EE(X)$.
 \end{prb}
  
  \begin{prb} 
- \begin{enumerate}
- \item Suppose you're on a game show, and you're given the choice of three doors: Behind one door is a car; behind the others, goats. You pick a door, say No. 1, and the host, who knows what's behind the doors, opens another door, say No. 3, which has a goat. He then says to you, "Do you want to pick door No. 2?" Is it to your advantage to switch your choice (Assuming you don't want a goat)? What is the probability of winning the car if you switch vs if you stick with door No. 1?
- 
- \item Now suppose that two of the three doors contain a car. Then after picking a door, say No. 1, the host, who knows what's behind the doors, opens another door, say No. 3, which has a car. Is it advantageous to switch doors or stick with your original pick?
- \end{enumerate}
+\textbf{a)} Suppose you're on a game show, and you're given the choice of three doors. Behind one door there is a car, behind the other - goats. You pick a door, say 1, and the host, who knows what's behind the doors, opens another door, say 3, which has a goat. He then says to you, ``Do you now want to pick door 2 instead?" Is it to your advantage to switch your choice (assuming you don't want a goat)? What is the probability of winning the car if you switch vs. if you stick with door 1? \\
+\noindent
+\textbf{b)} Now suppose that two of the three doors contain a car. Then after picking a door, say 1, the host, who knows what's behind the doors, opens another door, say 3, which has a car. Is it advantageous to switch doors or stick with your original pick?
  \end{prb}
 
 \begin{prb}
-You are playing a betting game with your friend that involves flipping a fair coin. Every time the coin comes up heads, your friend gives you a dollar. Every time the coin comes up tails, you give your friend a dollar. The rule of the game is that you keep flipping the coin until it comes up heads, and then you stop and the game ends. If we let X be your winnings from the game, find the probability mass function of X. \\
-
-Extra Hard: Find the expected value of X. If your goal is to make money, should you play this game?
+\textbf{a)} You are flipping a fair coin until it lands heads. After it lands heads, you stop. Let $X$ be the number of flips you make. Find the probability mass function of $X$. 
+\newline
+\textbf{b)} Find the expected value of X.  \\
+\textbf{c)} Find the expected value of X if the coin lands tails with probability $p$.
 \end{prb}
 
 
