@@ -134,7 +134,7 @@ after tossing $5$ fair coins.
 
 
 \begin{dfn}[\textbf{Random Variable - formal}]
-Let $\Omega$ be a sample space, and $\PP$ be a Probability Function on $\Omega$. A \textbf{random variable} X is a function $X : \Omega \to \R$. This is, $X$ assigns a number to each elementary outcome.
+Let $\Omega$ be a sample space, and $\PP$ be a Probability Function on $\Omega$. A \textbf{random variable} X is a function $X : \Omega \to \R$. That is, $X$ assigns a real number to each elementary outcome.
 \end{dfn}
 
 
@@ -146,11 +146,11 @@ $$p_X(x) = \PP(X = x) = \PP(\{X = x\}) = \PP(\{\omega \in \Omega: X(\omega) = x\
 \begin{dfn}[\textbf{Expected Value}]
 The \textbf{expected value} of a random variable $X$ is defined as:
 $$\sum_{x \in \R} x p_X(x)$$
+
 \end{dfn}
 
 
 \section{Introductory problems}
-
 
 \begin{prb}
 Let X be a discrete random variable on a finite sample space $\Omega$. Prove that $\sum_{x \in \R} p_X(x) = 1$.
@@ -193,6 +193,10 @@ Suppose you flip a biased coin that lands heads with probability $p$. Let $X$ be
 \newline
 \textbf{b)} Find the expected value of X.  \\
 \textbf{c)} Find the expected value of X if the coin lands tails with probability $p$.
+\end{prb}
+
+\begin{prb}
+Two players, A and B, have 4 fair coins each. They both flip their four coins simultaneously, and if the number of heads among 4 coins is the same for both A and B, B pays 4 dollars to A, otherwise A pays 1 dollar to B. Who would you prefer to be - player A or player B?
 \end{prb}
 
 
