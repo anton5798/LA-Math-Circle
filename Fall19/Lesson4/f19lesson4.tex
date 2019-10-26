@@ -137,32 +137,36 @@ after tossing $5$ fair coins.
 Let $\Omega$ be a sample space, and $\PP$ be a Probability Function on $\Omega$. A \textbf{random variable} X is a function $X : \Omega \to \R$. That is, $X$ assigns a real number to each elementary outcome.
 \end{dfn}
 
-
-\begin{dfn}[\textbf{Probability Mass Function}]
-The \textbf{probability mass function} of X, denoted $p_X : \R \to [0, 1]$ is defined by:
-$$p_X(x) = \PP(X = x) = \PP(\{X = x\}) = \PP(\{\omega \in \Omega: X(\omega) = x\})$$
-\end{dfn}
-
 \begin{dfn}[\textbf{Expected Value}]
-The \textbf{expected value} of a random variable $X$ is defined as:
-$$\sum_{x \in \R} x p_X(x)$$
-
+The {\bf expected value} $E[X]$ of $X$ is the average of all the values $X$ can take, weighted by how likely each is to occur; that is, if $x_1, x_2, \dots, x_n$ are the possible values of $X$\footnote{Note that $X$ only takes finitely many values because $\Omega$ is finite}, then  
+\begin{align*}
+E[X] &= x_1p_1 + x_2p_2 + \cdots + x_np_n, \quad\text{where}\quad \\
+p_i &= P(\{\omega \in \Omega : X(\omega) = x_i\}) \quad\text{is the probability that $X$ takes the value $x_i$}.
+\end{align*}
 \end{dfn}
 
+\noindent
+As the name indicates, $E[X]$ gives us some information about the value we expect $X$ to take on average. For example, in Problem 1, you will show that in the case where every elementary outcome is equally likely, $E[X]$ is just the average value of the function $X$. In the general setting, we get intuition for the expected value by imagining performing the ``experiment" that $X$ quantifies $N$ times and taking the average of all the outcomes. If the definition of expected value matches our intuition, then we would expect that as N gets large, these averages should get closer and closer to the expected value $E[X]$. The {\bf Strong Law of Large Numbers} says that indeed, in our setting, the probability of that happening is equal to 1. 
 
 \section{Introductory problems}
 
 \begin{prb}
-Let X be a discrete random variable on a finite sample space $\Omega$. Prove that $\sum_{x \in \R} p_X(x) = 1$.
+Suppose that a sample space $\Omega = \{\omega_1, ..., \omega_m\}$ consists of $m$ equally likely elementary outcomes. Show that 
+$$E[X] = \frac{X(\omega_1) + X(\omega_2) + ... + X(\omega_m)}{m}$$
 \end{prb}
 
 \begin{prb}
-You roll an unfair seven-sided die with faces 1, 2, ..., 7, where the probability of landing on each side is proportional to the value on the side. That is, you are twice as likely to roll a 2 as you are to roll a 1, and 7/3 more likely to roll a 7 than a 3. Let X be the value of the face that the die lands on. Find the probability mass function of X and the expected value of X.
+You roll an unfair seven-sided die with faces 1, 2, ..., 7, where the probability of landing on each side is proportional to the value on the side. That is, you are twice as likely to roll a 2 as you are to roll a 1, and 7/3 more likely to roll a 7 than a 3. Let X be the value of the face that the die lands on. Find the expected value of X.
 \end{prb}
 
+\begin{dfn}[\textbf{Probability Mass Function}]
+The \textbf{probability mass function} of X, denoted $p_X : \R \to [0, 1]$ is defined by:
+$$p_X(x) = \PP(X = x) = \PP(\{X = x\}) = \PP(\{\omega \in \Omega: X(\omega) = x\})$$
+Probability mass function (PMF) gives you the probability that a random variable is equal to a given value. 
+\end{dfn}
+
 \begin{prb}
-Suppose your friend offers you the following deal: a six-sided die is rolled and you get to wager any number of jolly ranchers on the result being even or odd. If you are correct, you win as many jolly ranchers as you wagered. If you are incorrect, you lose what you wagered. 
-Assuming you just went trick-or-treating and have an infinite supply of jolly ranchers, come up with a strategy with a positive expected value of jolly ranchers won and show that it works. 
+Let X be a random variable on a finite sample space $\Omega$. Prove that $\sum_{x \in \R} p_X(x) = 1$.
 \end{prb}
 
 \begin{prb}
@@ -174,30 +178,33 @@ What would be the optimal strategy? \\
 \textbf{Hint:} What is the expected value in each case?
 \end{prb}
 
-
-
 \section{Advanced problems}
 
 \begin{prb}
-Suppose you flip a biased coin that lands heads with probability $p$. Let $X$ be the number of heads in $3$ throws. Find the probability mass function of $X$, $p_X$, as well as the expected value of X, $\EE(X)$.
+Suppose you flip a biased coin that lands heads with probability $p$. Let $X$ be the number of heads in $3$ throws. Find the probability mass function of $X$, $p_X$, as well as the expected value of X, $E[X]$.
 \end{prb}
  
- \begin{prb} 
+\begin{prb} 
 \textbf{a)} Suppose you're on a game show, and you're given the choice of three doors. Behind one door there is a car, behind the other - goats. You pick a door, say 1, and the host, who knows what's behind the doors, opens another door, say 3, which has a goat. He then says to you, ``Do you now want to pick door 2 instead?" Is it to your advantage to switch your choice (assuming you don't want a goat)? What is the probability of winning the car if you switch vs. if you stick with door 1? \\
 \noindent
-\textbf{b)} Now suppose that two of the three doors contain a car. Then after picking a door, say 1, the host, who knows what's behind the doors, opens another door, say 3, which has a car. Is it advantageous to switch doors or stick with your original pick?
+\textbf{b)} Suppose that instead of a car, one of the doors contains $X$ dollars. Suppose you are told that you are automatically given additional $\frac{X}{10}$ dollars if you don't switch the doors after one is opened by the host. Would you switch in that case? \\
+\textbf{c)} What if you are given $\frac{X}{5}$?
  \end{prb}
 
 \begin{prb}
-\textbf{a)} You are flipping a fair coin until it lands heads. After it lands heads, you stop. Let $X$ be the number of flips you make. Find the probability mass function of $X$. 
-\newline
-\textbf{b)} Find the expected value of X.  \\
-\textbf{c)} Find the expected value of X if the coin lands tails with probability $p$.
+Two players, A and B, have 4 fair coins each. They both flip their four coins simultaneously, and if the number of heads among 4 coins is the same for both A and B, B pays 3 dollars to A, otherwise A pays 1 dollar to B. Who would you prefer to be - player A or player B?
 \end{prb}
 
 \begin{prb}
-Two players, A and B, have 4 fair coins each. They both flip their four coins simultaneously, and if the number of heads among 4 coins is the same for both A and B, B pays 4 dollars to A, otherwise A pays 1 dollar to B. Who would you prefer to be - player A or player B?
+\textbf{Note:} For this problem, we define the expected value as an infinite sum $\sum_{x \in \R} xp_X(x)$, because the sample space is infinite. \\
+\textbf{a)} You are flipping a fair coin until it lands heads. After it lands heads, you stop. Let $X$ be the number of flips you make. Find the probability mass function of $X$. 
+\newline
+\textbf{b)} Find the expected value of X.  \\
+\textbf{c)} Find the expected value of X if the coin lands tails with probability $p$. \\
+\textbf{d)} Suppose you are playing a game in which you are paid $2^n$ dollars if it takes $n$ flips to get a heads. Calculate the expected value you get paid in this game. How much will you be willing to pay to play it? Does the conclusion of the Strong Law of Large Numbers still hold when the sample space is allowed to be infinite?
 \end{prb}
+
+
 
 
 \end{document}
